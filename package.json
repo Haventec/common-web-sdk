@@ -1,7 +1,7 @@
 {
-  "name": "@haventec/common-js",
+  "name": "@haventec/common-web-sdk",
   "version": "1.0.0",
-  "description": "Haventec Common JS",
+  "description": "Haventec Common Web SDK",
   "keywords": [],
   "author": "John Kelaita <john.kelaita@haventec.com>",
   "repository": "",
@@ -28,15 +28,13 @@
   },
   "dependencies": {
     "@haventec/sjcl512": "1.0.0",
-    "@types/node": "^8.5.2",
-    "atob": "^2.0.3",
-    "superagent": "^3.5.1"
+    "atob": "^2.0.3"
   },
   "devDependencies": {
+    "@types/node": "^8.5.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "core-js": "^2.4.1",
-    "superagent-mock": "^3.3.0",
     "tapbuffer": "^1.0.9",
     "tapbundle": "^1.0.5",
     "typescript": "^2.3.2"

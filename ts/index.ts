@@ -9,11 +9,10 @@
  * @description
  * Entry point for the Haventec Common SDK
  */
-export * from './ht_http.service';
 export * from './ht_crypto.service';
 export * from './ht_data.service';
-export * from './api/haventec.client';
+export * from './api/haventec.common';
 export * from './storage/ht_storage.service.interface';
 export * from './model/htdata';
-export * from './providers/haventec.client.provider';
+export * from './providers/haventec.common.provider';
 

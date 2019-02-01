@@ -10,7 +10,7 @@ A collection of javascript functions to facilitate client-side interaction with 
 
 ### Angular 2-5 Usage
 
-For Angular 2, HaventecClientProvider is provided to easily inject HaventecClient into your Module, 
+For Angular 2, HaventecCommonProvider is provided to easily inject HaventecClient into your Module, 
 simply add it to the providers array. It can then be injected into constructors as is typical.
 
 ### Generic Usage

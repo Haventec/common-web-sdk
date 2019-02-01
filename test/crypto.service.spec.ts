@@ -24,7 +24,7 @@ tap.test("it should get a base64 hash salted pin", async() => {
         "-1423928526,-1668646437,224426341,575228253,73807181,315604118,1525626916,-1269350532,-384020127,860055040," +
         "68420620,2052820611,1030235570,852446727,-735781246,1095225559,-169855548,-905697917,-1806551245]";
 
-    let mySalt = HT_CryptoService.getBase64Hash512SaltedPin("0000", salt);
+    let mySalt = HT_CryptoService.getSaltedPin("0000", salt);
 
     // expect(mySalt).to.be.a("string");
     expect(mySalt.length).to.be.equal(88);
