@@ -153,8 +153,8 @@ export class HT_DataService {
                 this._localDataMap[username.toLowerCase()] = userLocalData
             } else {
                 // It was not at the Storage service, so we create one blank
-                userLocalData = new HT_Data(username, null, null, null, null, null,
-                    null, null, null, null, null);
+                userLocalData = new HT_Data(username, null, null,
+                    null, null, null, null);
                 this.setData(username, userLocalData);
             }
         }

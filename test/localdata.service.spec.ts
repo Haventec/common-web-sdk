@@ -22,8 +22,8 @@ tap.test("it should test DataService", async () => {
         "result":"Changed"
     };
 
-    let data: HT_Data = new HT_Data('testusername', 'testpinhash', 'testSaltBits', 'testConnectorName', 'testConnectorUuid',
-        'testApplicationUuid', 'testUserUuid', 'testDeviceUuid', 'testAuthKey', 'testPublicKey', new Date());
+    let data: HT_Data = new HT_Data('testusername', 'testSaltBits',
+        'testApplicationUuid', 'testUserUuid', 'testDeviceUuid', 'testAuthKey', new Date());
 
     let sessionData: HT_Session_Data = new HT_Session_Data('accessToken', 'accessTokenType');
 
