@@ -1,0 +1,57 @@
+{
+  "name": "@haventec/common-web-sdk",
+  "version": "1.0.0",
+  "description": "Haventec Common Web SDK",
+  "keywords": [],
+  "author": "Haventec <support@haventec.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haventec/common-web-sdk.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepare" : "tsc",
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
+  },
+  "contributors": [
+    {
+      "name": "Haventec"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Haventec/common-web-sdk/issues",
+    "email": "support@haventec.com"
+  },
+  "dependencies": {
+    "@haventec/sjcl512": "1.0.0",
+    "atob": "^2.0.3",
+    "clientjs": "^0.1.11",
+    "fingerprintjs2": "^2.0.6"
+  },
+  "devDependencies": {
+    "@types/clientjs": "^0.1.0",
+    "@types/fingerprintjs2": "^2.0.0",
+    "@types/jasmine": "^3.3.12",
+    "@types/node": "^8.5.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "core-js": "^2.4.1",
+    "jasmine": "^3.3.1",
+    "jasmine-core": "^3.3.0",
+    "karma": "^4.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-typescript": "^4.0.0",
+    "ts-node": "^8.0.3",
+    "typescript": "^2.3.2"
+  },
+  "peerDependencies": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ]
+}
