@@ -8,7 +8,7 @@
     ], 
     "declaration": true,
     "sourceMap": true, 
-    "outDir": "dist",
+    "outDir": "./dist",
     "strict": false,
     "moduleResolution": "node",
     "typeRoots": [
@@ -19,7 +19,11 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
   },
+  "include": [
+    "./**/*"
+  ],
   "exclude": [
-    "src/test/**/*"
+    "./src/test/**/*",
+    "./dist/**/*"
   ]
 }
