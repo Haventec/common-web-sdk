@@ -1,6 +1,6 @@
 import 'clientjs';
 import * as Fingerprint2 from 'fingerprintjs2';
-import { Error } from '../errors/errors.enum';
+import { ErrorCode, ErrorMessage, HT_Error } from '../model/errors';
 
 
 class DeviceInfoService {
@@ -16,7 +16,7 @@ class DeviceInfoService {
                 this.addClientJSAttributes();
             });
         } catch (error) {
-            throw Error.FINGERPRINT_CREATION_ERROR;
+            throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.FINGERPRINT_CREATION_ERROR);
         }
         
     }

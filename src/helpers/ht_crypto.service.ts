@@ -1,5 +1,5 @@
 import * as sjcl from "@haventec/sjcl512";
-import { Error } from "../errors/errors.enum";
+import { ErrorCode, ErrorMessage, HT_Error  } from "../model/errors";
 
 class HT_CryptoService {
 
@@ -10,7 +10,7 @@ class HT_CryptoService {
             hash512.update(pin);
             return sjcl.codec.base64.fromBits( hash512.finalize());
         } catch (error) {
-            throw Error.SJCL_ERROR;
+            throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.SJCL_ERROR);
         }
         
     }
@@ -19,7 +19,7 @@ class HT_CryptoService {
         try{
             return sjcl.random.randomWords(128);
         } catch (error) {
-            throw Error.SJCL_ERROR;
+            throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.SJCL_ERROR);
         }
         
     }

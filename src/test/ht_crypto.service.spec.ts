@@ -1,6 +1,6 @@
 import * as sjcl from "@haventec/sjcl512";
 import ht_cryptoService from "../helpers/ht_crypto.service";
-import { Error } from "../errors/errors.enum";
+import { ErrorMessage } from "../model/errors";
 
 describe("HT_CryptoService", function () {
 
@@ -16,7 +16,7 @@ describe("HT_CryptoService", function () {
             ht_cryptoService.generateSalt();
             fail();
         } catch (error){
-            expect(error).toBe(Error.SJCL_ERROR);
+            expect(error.message).toBe(ErrorMessage.SJCL_ERROR);
         }
     });
 
@@ -31,7 +31,7 @@ describe("HT_CryptoService", function () {
             ht_cryptoService.getSaltedPin("", 1111);
             fail();
         } catch (error){
-            expect(error).toBe(Error.SJCL_ERROR);
+            expect(error.message).toBe(ErrorMessage.SJCL_ERROR);
         }
     });
 });
