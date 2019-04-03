@@ -9,6 +9,7 @@ describe("HT_Common", function() {
       spyOn(sjcl.codec.base64, 'fromBits').and.throwError("");
       try{
         haventecCommon.generateSalt();
+        fail();
       } catch (e) {
         expect(e.message).toBe(ErrorMessage.SJCL_ERROR);
       } 
