@@ -6,10 +6,10 @@ import * as sjcl from "@haventec/sjcl512";
 
 describe("HT_Common", function() {
     it("calls the ht_crypto service and gets the required error message", function() {
-      spyOn(sjcl.codec.base64, 'fromBits').and.throwError("");
+      spyOn(sjcl.random, 'randomWords').and.throwError("");
       try{
         haventecCommon.generateSalt();
-        fail();
+        fail(); 
       } catch (e) {
         expect(e.message).toBe(ErrorMessage.SJCL_ERROR);
       } 
