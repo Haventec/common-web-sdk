@@ -1,11 +1,11 @@
 import haventecCommon from '../api/haventec.common';
-import ht_ctrpto from '../helpers/ht_crypto.service';
+import ht_crypto from '../helpers/ht_crypto.service';
 import ht_deviceInfo from '../helpers/ht_device_info.service';
 import { ErrorMessage } from '../model/errors';
 import * as sjcl from "@haventec/sjcl512";
 
 describe("HT_Common", function() {
-    it("calls the crpto service and gets the required error message", function() {
+    it("calls the ht_crypto service and gets the required error message", function() {
       spyOn(sjcl.codec.base64, 'fromBits').and.throwError("");
       try{
         haventecCommon.generateSalt();
@@ -15,13 +15,13 @@ describe("HT_Common", function() {
     });
 
     it("calls the crypto service to generate the salt", function() {
-      let spy = spyOn(ht_ctrpto,'generateSalt');
+      let spy = spyOn(ht_crypto,'generateSalt');
       haventecCommon.generateSalt();
       expect(spy).toHaveBeenCalled();
     });
 
     it("calls the crypto service to generate the hash pin", function() {
-      let spy = spyOn(ht_ctrpto,'getSaltedPin');
+      let spy = spyOn(ht_crypto,'getSaltedPin');
       haventecCommon.hashPin("",111);
       expect(spy).toHaveBeenCalled();
     });
