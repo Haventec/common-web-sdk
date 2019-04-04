@@ -17,12 +17,12 @@ However,  the implementation requires window object (browser) and wouldn't funct
 
 ## Methods 
 
-|Function name| Parameters  | Returns   | Description  |
-|--|--|--|--|
-| hashPin | pin, salt  | string | returns the hashed pin.
-| getDeviceInfo |   | Object | returns information about device including the fingerprint.
-| generateSalt |   | number | returns salt to be used while hashing
 
+* **hashPin:** It returns the hashed pin.
+
+* **getDeviceInfo:** It returns the information about device including the fingerprint.
+
+* **generateSalt:** It returns the salt to be used while hashing.
 
 
 ## Development
