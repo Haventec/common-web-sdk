@@ -1,4 +1,3 @@
-
 # Haventec Common-Web-SDK
 
 A common collection of javascript functions to facilitate client-side interaction.
@@ -9,9 +8,12 @@ A common collection of javascript functions to facilitate client-side interactio
 
 ## General Usage
 
-import haventecClient from '@haventec/common-web-sdk';
-
-This imports all the exposed methods in your file. 
+The common-web-sdk is exported as a default export and call be directly consumed by Javascript/Typescript file. 
+```
+import haventecCommon from '@haventec/common-web-sdk' 
+let haventecCommon = require ('@haventec/common-web-sdk' ) 
+```
+However,  the implementation requires window object (browser) and wouldn't function in a node.js environment. 
 
 ## Methods 
 
@@ -23,9 +25,13 @@ This imports all the exposed methods in your file.
 
 
 
-## Contributors
+## Development
 
- - Haventec Development Team
+ To build and publish locally, clone the project and run the following: 
+ ```
+ npm install
+ npm pack / npm publish
+  ```
 
 ## License
 

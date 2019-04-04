@@ -22,9 +22,6 @@ class DeviceInfoService {
     }
 
     public getDeviceInfo(): Object {
-        while(Object.keys(this.fingerprintComponents).length < 1) {
-            setTimeout(this.getDeviceInfo, 100);
-        }
         return this.fingerprintComponents;
     }
 
