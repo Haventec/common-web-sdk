@@ -1,4 +1,4 @@
-# Haventec Common-Web-SDK
+# Haventec Common Web SDK
 
 A common collection of javascript functions to facilitate client-side interaction.
 
