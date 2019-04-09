@@ -9,8 +9,8 @@ class DeviceInfoService {
 
     constructor() {
         // @ts-ignore: Refering to a UMD global error, type error
-        this.clientjs = new ClientJS(); 
-        try{
+        this.clientjs = new ClientJS();
+        try {
             Fingerprint2.get((components: Fingerprint2.Component[]) => {
                 components.filter(component => this.isRequired(component.key)).forEach((value) => this.fingerprintComponents[value.key] = this.join(value.value));
                 this.addClientJSAttributes();
@@ -18,35 +18,15 @@ class DeviceInfoService {
         } catch (error) {
             throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.FINGERPRINT_CREATION_ERROR);
         }
-        
+
     }
 
-    public getDeviceInfo(): Object {
-        return this.fingerprintComponents;
-    }
-
-    private isRequired(key: string): boolean {
-        if( key === 'js_fonts' || key === 'canvas' || key === 'webgl') return false;
-        return true;
-    }
-
-
-    private addClientJSAttribute(key: string, value: string| boolean): void {
-        if(!this.fingerprintComponents[key]) {
-            this.fingerprintComponents[key] = value;
-        }
-    }
-
-    private addClientJSAttributes(): void {
-        this.addClientJSAttribute('fingerprint', this.clientjs.getFingerprint().toString());
+    public getDeviceInfo(detailedFingerprint: boolean): Object {
+        if (!detailedFingerprint) return this.fingerprintComponents;
         this.addClientJSAttribute('user_agent', this.clientjs.getUserAgent());
-        this.addClientJSAttribute('browserType', this.clientjs.getBrowser());
-        this.addClientJSAttribute('browserVersion', this.clientjs.getBrowserVersion());
         this.addClientJSAttribute('browser_major_version', this.clientjs.getBrowserMajorVersion());
         this.addClientJSAttribute('engine', this.clientjs.getEngine());
         this.addClientJSAttribute('engine_version', this.clientjs.getEngineVersion());
-        this.addClientJSAttribute('osType', this.clientjs.getOS());
-        this.addClientJSAttribute('os_version', this.clientjs.getOSVersion());
         this.addClientJSAttribute('device', this.clientjs.getDevice());
         this.addClientJSAttribute('device_type', this.clientjs.getDeviceType());
         this.addClientJSAttribute('device_vendor', this.clientjs.getDeviceVendor());
@@ -80,6 +60,27 @@ class DeviceInfoService {
         this.addClientJSAttribute('language', this.clientjs.getLanguage());
         this.addClientJSAttribute('system_language', this.clientjs.getSystemLanguage());
         this.addClientJSAttribute('is_canvas', this.clientjs.isCanvas());
+        return this.fingerprintComponents;
+
+    }
+
+    private isRequired(key: string): boolean {
+        if (key === 'js_fonts' || key === 'canvas' || key === 'webgl') return false;
+        return true;
+    }
+
+
+    private addClientJSAttribute(key: string, value: string | boolean): void {
+        if (!this.fingerprintComponents[key]) {
+            this.fingerprintComponents[key] = value;
+        }
+    }
+
+    private addClientJSAttributes(): void {
+        this.addClientJSAttribute('fingerprint', this.clientjs.getFingerprint().toString());
+        this.addClientJSAttribute('browserType', this.clientjs.getBrowser());
+        this.addClientJSAttribute('browserVersion', this.clientjs.getBrowserVersion());
+        this.addClientJSAttribute('osType', this.clientjs.getOS());
         this.addClientJSAttribute('csFonts', this.clientjs.getFonts());
     }
 

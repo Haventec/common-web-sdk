@@ -9,8 +9,8 @@ class HaventecCommon {
         return ht_cryptoService.getSaltedPin(pin, salt);
     }
 
-    public getDeviceInfo(): Object {
-        return ht_device_infoService.getDeviceInfo();
+    public getDeviceInfo(detailedFingerprint = false): Object {
+        return ht_device_infoService.getDeviceInfo(detailedFingerprint);
     }
 
     public generateSalt(): Array<number>[128] {
