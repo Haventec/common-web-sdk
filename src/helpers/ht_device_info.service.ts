@@ -13,8 +13,8 @@ class DeviceInfoService {
         try {
             Fingerprint2.get((components: Fingerprint2.Component[]) => {
                 components.filter(component => this.isRequired(component.key)).forEach((value) => this.fingerprintComponents[value.key] = this.join(value.value));
-                this.addClientJSAttributes();
             });
+            this.addClientJSAttributes();
         } catch (error) {
             throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.FINGERPRINT_CREATION_ERROR);
         }
