@@ -10,7 +10,12 @@ class HaventecCommon {
     }
 
     public getDeviceInfo(detailedFingerprint = false): Object {
-        return ht_device_infoService.getDeviceInfo(detailedFingerprint);
+        let deviceInfo = ht_device_infoService.getDeviceInfo(detailedFingerprint);
+        if (deviceInfo) 
+            return { 
+                params: Object.entries(deviceInfo).map(([key, value]) => ({key,value}))
+            }
+        return;
     }
 
     public generateSalt(): Array<number>[128] {
