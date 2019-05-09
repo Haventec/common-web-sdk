@@ -5,14 +5,14 @@ import { ErrorCode, ErrorMessage, HT_Error } from '../model/errors';
 
 class DeviceInfoService {
     private clientjs;
-    private fingerprintComponents: any = new Object();
+    private fingerprintComponents = [];
 
     constructor() {
         // @ts-ignore: Refering to a UMD global error, type error
         this.clientjs = new ClientJS();
         try {
             Fingerprint2.get((components: Fingerprint2.Component[]) => {
-                components.filter(component => this.isRequired(component.key)).forEach((value) => this.fingerprintComponents[value.key] = this.join(value.value));
+                components.filter(component => this.isRequired(component.key)).forEach((value) => this.addClientJSAttribute(value.key, value.value));
             });
             this.addClientJSAttributes();
         } catch (error) {
@@ -71,9 +71,10 @@ class DeviceInfoService {
 
 
     private addClientJSAttribute(key: string, value: string | boolean): void {
-        if (!this.fingerprintComponents[key]) {
-            this.fingerprintComponents[key] = value;
-        }
+        this.fingerprintComponents.push({
+                    "key": key,
+                    "value": value
+        });
     }
 
     private addClientJSAttributes(): void {
