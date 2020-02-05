@@ -21,7 +21,7 @@ class DeviceInfoService {
 
     }
 
-    public getDeviceInfo(detailedFingerprint: boolean): Object {
+    public getDeviceInfo(detailedFingerprint?: boolean): Object {
         if (!detailedFingerprint) return this.fingerprintComponents;
         this.addClientJSAttribute('user_agent', this.clientjs.getUserAgent());
         this.addClientJSAttribute('browser_major_version', this.clientjs.getBrowserMajorVersion());
