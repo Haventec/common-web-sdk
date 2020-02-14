@@ -37,8 +37,17 @@ describe("HT_Common", function() {
     });
 
     it("calls deviceInfoService to retrieve the deviceInfo", function() {
-      let spy = spyOn(ht_deviceInfo,'getDeviceInfo');
-      haventecCommon.getDeviceInfo();
-      expect(spy).toHaveBeenCalled();
-    }); 
+
+      let deviceInfo = haventecCommon.getDeviceInfo();
+
+        expect(deviceInfo.getParam('browserType')).toBe('Chrome');
+        expect(deviceInfo.getParam('osType').length).toBeGreaterThan(1);
+        expect(deviceInfo.getParam('browserVersion').length).toBeGreaterThan(1);
+        expect(deviceInfo.getParam('fingerprint').length).toBeGreaterThan(10);
+        expect(deviceInfo.getParam('deviceName').length).toBeGreaterThan(10);
+        expect(deviceInfo.getParam('deviceName')).toContain('Chrome');
+        expect(deviceInfo.getParam('user_agent')).toContain('Chrome');
+        expect(deviceInfo.getParam('user_agent')).toContain(deviceInfo.getParam('browserType'));
+        expect(deviceInfo.getParam('user_agent')).toContain(deviceInfo.getParam('browserVersion'));
+    });
   });
