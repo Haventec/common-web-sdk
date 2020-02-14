@@ -27,19 +27,18 @@ class DeviceInfoService {
 
 
         try {
-            this.getFingerprintComponents();
-
             Fingerprint2.get((components: Fingerprint2.Component[]) => {
 
                 this.fingerprintComponents = components;
 
                 components.filter(component => this.isRequired(component.key)).forEach((value) => {
-                    this.pushFPC(this.fingerprintDetails, value.key, value.value)
+                    this.pushFPC(this.fingerprintDetails, value.key, this.joinValues(value.value))
                 });
 
                 const values = components.map(function (component) { return component.value });
                 this.fingerprint = Fingerprint2.x64hash128(values.join(''), 31);
                 this.pushFPC(this.fingerprintDetails, 'fingerprint', this.fingerprint);
+
             });
         } catch (error) {
             throw new HT_Error(ErrorCode.HT_CM_EXTERNAL, ErrorMessage.FINGERPRINT_CREATION_ERROR);
@@ -117,9 +116,10 @@ class DeviceInfoService {
 
     getFingerprint() {
         if ( !this.fingerprint ) {
-            if ( this.fingerprintComponents ) {
+            if ( this.fingerprintComponents && Object.prototype.toString.call( this.fingerprintComponents ) === '[object Array]') {
                 const values = this.fingerprintComponents.map(function (component) { return component.value });
                 this.fingerprint = Fingerprint2.x64hash128(values.join(''), 31);
+                this.pushFPC(this.fingerprintDetails, 'fingerprint', this.fingerprint);
             } else {
                 return null;
             }
@@ -154,7 +154,9 @@ class DeviceInfoService {
             this.pushFPC(this.fingerprintDetails, 'browserType', this.getBrowser());
             this.pushFPC(this.fingerprintDetails, 'browserVersion', this.getBrowserVersion());
             this.pushFPC(this.fingerprintDetails, 'deviceName', this.getDeviceName());
-            this.pushFPC(this.fingerprintDetails, 'user_agent', navigator.userAgent);
+            this.pushFPC(this.fingerprintDetails, 'userAgent', navigator.userAgent);
+
+            this.getFingerprint();
 
             if ( this.getBrowserVersion() ) {
                 this.pushFPC(this.fingerprintDetails, 'browser_major_version', this.getBrowserMajorVersion());
@@ -238,7 +240,6 @@ class DeviceInfoService {
             // this.pushFPC(fc, 'is_silverlight', this.clientjs.isSilverlight());
             // this.pushFPC(fc, 'silverlight_version', this.clientjs.getSilverlightVersion());
             // this.pushFPC(fc, 'is_canvas', this.clientjs.isCanvas());
-            // this.pushFPC(fc, 'csFonts', this.clientjs.getFonts());
         }
 
         return this.fingerprintDetails;
@@ -397,14 +398,6 @@ class DeviceInfoService {
 
         return this.navigatorBrowserData;
     }
-
-    private join(value: any): string {
-        if (value && Object.prototype.toString.call(value) === '[object Array]') {
-            return value.join();
-        }
-        return value;
-    }
-
 }
 
 export default new DeviceInfoService();

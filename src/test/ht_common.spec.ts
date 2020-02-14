@@ -46,8 +46,8 @@ describe("HT_Common", function() {
         expect(deviceInfo.getParam('fingerprint').length).toBeGreaterThan(10);
         expect(deviceInfo.getParam('deviceName').length).toBeGreaterThan(10);
         expect(deviceInfo.getParam('deviceName')).toContain('Chrome');
-        expect(deviceInfo.getParam('user_agent')).toContain('Chrome');
-        expect(deviceInfo.getParam('user_agent')).toContain(deviceInfo.getParam('browserType'));
-        expect(deviceInfo.getParam('user_agent')).toContain(deviceInfo.getParam('browserVersion'));
+        expect(deviceInfo.getParam('userAgent')).toContain('Chrome');
+        expect(deviceInfo.getParam('userAgent')).toContain(deviceInfo.getParam('browserType'));
+        expect(deviceInfo.getParam('userAgent')).toContain(deviceInfo.getParam('browserVersion'));
     });
   });
