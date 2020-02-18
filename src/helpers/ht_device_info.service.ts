@@ -39,8 +39,6 @@ class DeviceInfoService {
     public getDeviceInfoParams(detailedFingerprint?: boolean): Array<DeviceInfoParam> {
         this.getFingerprintComponents();
 
-        if (!detailedFingerprint) return this.fingerprintDetails;
-
         return this.fingerprintDetails;
     }
 
@@ -56,8 +54,6 @@ class DeviceInfoService {
         } else {
             return this.getOsType() + ' ' + this.getBrowser() + ' ' + this.getBrowserVersion();
         }
-
-        return null;
     }
 
     getOsType() {
@@ -66,8 +62,6 @@ class DeviceInfoService {
         } else {
             return this.getUAFromNavigator().os;
         }
-
-        return null;
     }
 
     getBrowser() {
@@ -86,8 +80,6 @@ class DeviceInfoService {
         } else {
             return this.getUAFromNavigator().fullVersion;
         }
-
-        return null;
     }
 
     getBrowserMajorVersion() {
@@ -96,8 +88,6 @@ class DeviceInfoService {
         } else {
             return this.getUAFromNavigator().majorVersion;
         }
-
-        return null;
     }
 
     getFonts() {
@@ -165,7 +155,7 @@ class DeviceInfoService {
                         this.pushFPC(this.fingerprintDetails, 'device_vendor', this.browserData.device.vendor);
                     }
                     if ( this.browserData.cpu ) {
-                        this.pushFPC(this.fingerprintDetails, 'cpu', this.browserData.architecture);
+                        this.pushFPC(this.fingerprintDetails, 'cpu', this.browserData.cpu.architecture);
                     }
                 }
 
