@@ -1,6 +1,7 @@
 import ht_device_infoService from "../helpers/ht_device_info.service";
 import ht_cryptoService from "../helpers/ht_crypto.service";
 import { HT_Error, ErrorCode, ErrorMessage } from "../model/errors";
+import {DeviceInfo} from "../model/deviceInfo";
 
 class HaventecCommon {
 
@@ -9,13 +10,15 @@ class HaventecCommon {
         return ht_cryptoService.getSaltedPin(pin, salt);
     }
 
-    public getDeviceInfo(detailedFingerprint = false): Object {
-        let deviceInfo = ht_device_infoService.getDeviceInfo(detailedFingerprint);
-        if (deviceInfo) 
-            return { 
-                params: deviceInfo
-            }
-        return;
+    public getDeviceInfo(detailedFingerprint = false): DeviceInfo {
+        let deviceInfoParams = ht_device_infoService.getDeviceInfoParams(detailedFingerprint);
+
+        const deviceInfo: DeviceInfo = new DeviceInfo();
+        if (deviceInfoParams) {
+            deviceInfo.params = deviceInfoParams;
+        }
+
+        return deviceInfo;
     }
 
     public generateSalt(): Array<number>[128] {
