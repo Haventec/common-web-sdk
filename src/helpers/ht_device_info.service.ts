@@ -70,8 +70,6 @@ class DeviceInfoService {
         } else {
             return this.getUAFromNavigator().browserName;
         }
-
-        return null;
     }
 
     getBrowserVersion() {
